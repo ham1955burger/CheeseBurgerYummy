@@ -52,6 +52,7 @@ public class PhotoListActivity extends Activity{
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.addItemDecoration(new PhotoListAdapter.ItemDecorationAlbumColumns(10, 2));
     }
 
     @Override
