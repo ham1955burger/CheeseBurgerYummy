@@ -47,7 +47,7 @@ class PhotoListViewController: UIViewController {
 //    }
 }
 
-extension PhotoListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension PhotoListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard self.list != nil else {
             return 0
@@ -67,19 +67,19 @@ extension PhotoListViewController: UICollectionViewDelegate, UICollectionViewDat
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width / 2 - 1.25, height: self.collectionView.frame.height / 3)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewlayout: UICollectionViewLayout, insetForSectionAtIndex section: NSInteger) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewlayout: UICollectionViewLayout, insetForSectionAt section: NSInteger) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewlayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: NSInteger) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewlayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: NSInteger) -> CGFloat {
         return 2.0;
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: NSInteger) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: NSInteger) -> CGFloat {
         return 2.0;
     }
     
