@@ -7,8 +7,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.constraint.ConstraintLayout;
 import android.text.TextUtils;
@@ -26,9 +31,16 @@ import com.example.user.CheeseBurgerYummy.Network.ServiceGenerator;
 import com.example.user.CheeseBurgerYummy.Photo.PhotoBook;
 import com.example.user.CheeseBurgerYummy.Util.Utility;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Request;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,6 +59,10 @@ import timber.log.Timber;
  */
 
 public class PhotoDetailActivity extends Activity {
+    static final int REQUEST_TAKE_PHOTO = 0;
+    static final int REQUEST_PHOTO_LIBRARY = 1;
+    static final int REQUEST_IMAGE_CROP = 2;
+
     @BindView(R.id.imageView) ImageView imageView;
     @BindView(R.id.ImageTextView) TextView imageTextView;
     @BindView(R.id.createdDateTextView) TextView createdDateTextView;
@@ -57,6 +73,9 @@ public class PhotoDetailActivity extends Activity {
     PhotoBook info;
     String userChoosenTask;
     File file;
+
+    private String mCurrentPhotoPath;
+    private Uri contentUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,21 +103,64 @@ public class PhotoDetailActivity extends Activity {
             createdDateTextView.setVisibility(View.GONE);
         }
 
+        File path = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES);
+        if(!path.exists()) {
+            path.mkdirs();
+        }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
-        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
+            rotatePhoto();
+            cropImage(contentUri);
+        } else if (requestCode == REQUEST_PHOTO_LIBRARY && resultCode == RESULT_OK) {
+            contentUri = null;
+            contentUri = data.getData();
+//            imageView.setImageURI(contentUri);
+            cropImage(contentUri);
+        } else if (requestCode == REQUEST_IMAGE_CROP && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            if(extras != null) {
+                Bitmap bitmap = (Bitmap)extras.get("data");
+                imageView.setImageBitmap(bitmap);
+
+                // 임시파일 삭제
+                if(mCurrentPhotoPath != null) {
+                    File f = new File(mCurrentPhotoPath);
+                    if(f.exists()) {
+                        f.delete();
+                    }
+                    mCurrentPhotoPath = null;
+                }
+            } else {
+                imageView.setImageURI(contentUri);
+            }
+        }
+
+
+
+        /*
         switch(requestCode) {
-            case 0:
+            case (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK):
                 if(resultCode == RESULT_OK){
-                    Uri selectedImage = imageReturnedIntent.getData();
-                    imageView.setImageURI(selectedImage);
+                    Uri selectedImage = data.getData();
+
+                    if (selectedImage != null) {
+                        imageView.setImageURI(selectedImage);
+                    } else {
+                        Bundle extras = data.getExtras();
+                        Bitmap imageBitmap = (Bitmap) extras.get("data");
+                        imageView.setImageBitmap(imageBitmap);
+                    }
                 }
 
                 break;
-            case 1:
+            case REQUEST_TAKE_PHOTO:
                 if(resultCode == RESULT_OK){
+
                     imageTextView.setVisibility(View.INVISIBLE);
                     Uri selectedImage = imageReturnedIntent.getData();
                     imageView.setImageURI(selectedImage);
@@ -109,7 +171,7 @@ public class PhotoDetailActivity extends Activity {
                     file = new File(getRealPathFromURI(selectedImage));
                 }
                 break;
-        }
+        }*/
     }
 
     @Override
@@ -118,7 +180,7 @@ public class PhotoDetailActivity extends Activity {
             case Utility.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     if(userChoosenTask.equals("Take Photo"))
-                        cameraIntent();
+                        dispatchTakePictureIntent();
                     else if(userChoosenTask.equals("Choose from Library"))
                         galleryIntent();
                 } else {
@@ -249,15 +311,20 @@ public class PhotoDetailActivity extends Activity {
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
-                boolean result=Utility.checkPermission(PhotoDetailActivity.this);
+                // 임시파일 삭제
+                if(mCurrentPhotoPath != null) {
+                    File f = new File(mCurrentPhotoPath);
+                    if(f.exists()) {
+                        f.delete();
+                    }
+                    mCurrentPhotoPath = null;
+                }
+                contentUri = null;
+
                 if (items[item].equals("Take Photo")) {
-                    userChoosenTask="Take Photo";
-                    if(result)
-                        cameraIntent();
+                    dispatchTakePictureIntent();
                 } else if (items[item].equals("Choose from Library")) {
-                    userChoosenTask="Choose from Library";
-                    if(result)
-                        galleryIntent();
+                    galleryIntent();
                 } else if (items[item].equals("Cancel")) {
                     dialog.dismiss();
                 }
@@ -266,28 +333,211 @@ public class PhotoDetailActivity extends Activity {
         builder.show();
     }
 
+    /*
     private void cameraIntent() {
-        Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(takePicture, 0);
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+        }
     }
+    */
 
     private void galleryIntent() {
         Intent pickPhoto = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(pickPhoto , 1);
+        // fix) editing is not supported for this image
+        pickPhoto.setType("image/*");
+        pickPhoto.putExtra("crop", "true");
+        pickPhoto.putExtra("return-data", true);
+        pickPhoto.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+        startActivityForResult(pickPhoto , REQUEST_PHOTO_LIBRARY);
     }
 
-    private String getRealPathFromURI(Uri contentURI) {
-        String result;
-        Cursor cursor = getContentResolver().query(contentURI, null, null, null, null);
-        if (cursor == null) { // Source is Dropbox or other similar local file path
-            result = contentURI.getPath();
-        } else {
-            cursor.moveToFirst();
-            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
-            result = cursor.getString(idx);
-            cursor.close();
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+                //            ...
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                contentUri = Uri.fromFile(photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+                        Uri.fromFile(photoFile));
+                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+            }
         }
-        return result;
+    }
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES);
+        file = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        mCurrentPhotoPath = file.getAbsolutePath(); //≥™¡ﬂø° Rotate«œ±‚ ¿ß«— ∆ƒ¿œ ∞Ê∑Œ.
+
+        return file;
+    }
+
+    private void galleryAddPic() {
+        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        File f = new File(mCurrentPhotoPath);
+        Uri contentUri = Uri.fromFile(f);
+        mediaScanIntent.setData(contentUri);
+        this.sendBroadcast(mediaScanIntent);
+    }
+
+    private void cropImage(Uri contentUri) {
+        Intent cropIntent = new Intent("com.android.camera.action.CROP");
+        //indicate image type and Uri of image
+        cropIntent.setDataAndType(contentUri, "image/*");
+        //set crop properties
+        cropIntent.putExtra("crop", "true");
+        //indicate aspect of desired crop
+        cropIntent.putExtra("aspectX", 1);
+        cropIntent.putExtra("aspectY", 1);
+        //indicate output X and Y
+        cropIntent.putExtra("outputX", 256);
+        cropIntent.putExtra("outputY", 256);
+        //retrieve data on return
+        cropIntent.putExtra("return-data", true);
+        startActivityForResult(cropIntent, REQUEST_IMAGE_CROP);
+    }
+
+    public void rotatePhoto() {
+        ExifInterface exif;
+        try {
+            if(mCurrentPhotoPath == null) {
+                mCurrentPhotoPath = contentUri.getPath();
+            }
+            exif = new ExifInterface(mCurrentPhotoPath);
+            int exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+            int exifDegree = exifOrientationToDegrees(exifOrientation);
+            if(exifDegree != 0) {
+                Bitmap bitmap = getBitmap();
+                Bitmap rotatePhoto = rotate(bitmap, exifDegree);
+                saveBitmap(rotatePhoto);
+            }
+        }
+        catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    public int exifOrientationToDegrees(int exifOrientation)
+    {
+        if(exifOrientation == ExifInterface.ORIENTATION_ROTATE_90)
+        {
+            return 90;
+        }
+        else if(exifOrientation == ExifInterface.ORIENTATION_ROTATE_180)
+        {
+            return 180;
+        }
+        else if(exifOrientation == ExifInterface.ORIENTATION_ROTATE_270)
+        {
+            return 270;
+        }
+        return 0;
+    }
+
+    public static Bitmap rotate(Bitmap image, int degrees)
+    {
+        if(degrees != 0 && image != null)
+        {
+            Matrix m = new Matrix();
+            m.setRotate(degrees, (float)image.getWidth(), (float)image.getHeight());
+
+            try
+            {
+                Bitmap b = Bitmap.createBitmap(image, 0, 0, image.getWidth(), image.getHeight(), m, true);
+
+                if(image != b)
+                {
+                    image.recycle();
+                    image = b;
+                }
+
+                image = b;
+            }
+            catch(OutOfMemoryError ex)
+            {
+                ex.printStackTrace();
+            }
+        }
+        return image;
+    }
+
+    public void saveBitmap(Bitmap bitmap) {
+        File file = new File(mCurrentPhotoPath);
+        OutputStream out = null;
+        try {
+            out = new FileOutputStream(file);
+        }
+        catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out) ;
+        try {
+            out.close();
+        }
+        catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public Bitmap getBitmap() {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inInputShareable = true;
+        options.inDither=false;
+        options.inTempStorage=new byte[32 * 1024];
+        options.inPurgeable = true;
+        options.inJustDecodeBounds = false;
+
+        File f = new File(mCurrentPhotoPath);
+
+        FileInputStream fs=null;
+        try {
+            fs = new FileInputStream(f);
+        } catch (FileNotFoundException e) {
+            //TODO do something intelligent
+            e.printStackTrace();
+        }
+
+        Bitmap bm = null;
+
+        try {
+            if(fs!=null) bm=BitmapFactory.decodeFileDescriptor(fs.getFD(), null, options);
+        } catch (IOException e) {
+            //TODO do something intelligent
+            e.printStackTrace();
+        } finally{
+            if(fs!=null) {
+                try {
+                    fs.close();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }
+        return bm;
     }
 }
