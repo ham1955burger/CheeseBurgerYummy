@@ -14,12 +14,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name="com.example.user.CheeseBurgerYummy.MainActivity">
+        <activity android:name="com.example.user.CheeseBurgerYummy.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.user.CheeseBurgerYummy.MainActivity"></activity>
         <activity android:name="com.example.user.CheeseBurgerYummy.PhotoListActivity"></activity>
         <activity android:name="com.example.user.CheeseBurgerYummy.PhotoDetailActivity"></activity>
         <activity android:name="com.example.user.CheeseBurgerYummy.HABListActivity"></activity>
