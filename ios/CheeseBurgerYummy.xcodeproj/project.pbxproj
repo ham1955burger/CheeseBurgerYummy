@@ -17,6 +17,7 @@
 		CE0F03531D5DA889006F9AB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE0F03511D5DA889006F9AB3 /* LaunchScreen.storyboard */; };
 		CE0F035E1D5DA889006F9AB3 /* PhotoTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F035D1D5DA889006F9AB3 /* PhotoTestTests.swift */; };
 		CE0F03691D5DA889006F9AB3 /* PhotoTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F03681D5DA889006F9AB3 /* PhotoTestUITests.swift */; };
+		CE27DA991E0A48B20024BC3C /* ServerConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27DA981E0A48B20024BC3C /* ServerConnect.swift */; };
 		CE4D6D211D6304D6002B8794 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D6D201D6304D6002B8794 /* PhotoDetailViewController.swift */; };
 		CE87D4E81D5DB6620011A324 /* HABListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87D4E71D5DB6620011A324 /* HABListViewController.swift */; };
 		CE87D4EA1D5DB66C0011A324 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87D4E91D5DB66C0011A324 /* PhotoListViewController.swift */; };
@@ -68,6 +69,7 @@
 		CE0F03641D5DA889006F9AB3 /* CheeseBurgerYummyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CheeseBurgerYummyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0F03681D5DA889006F9AB3 /* PhotoTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTestUITests.swift; sourceTree = "<group>"; };
 		CE0F036A1D5DA889006F9AB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE27DA981E0A48B20024BC3C /* ServerConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnect.swift; sourceTree = "<group>"; };
 		CE4D6D201D6304D6002B8794 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		CE87D4E71D5DB6620011A324 /* HABListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HABListViewController.swift; sourceTree = "<group>"; };
 		CE87D4E91D5DB66C0011A324 /* PhotoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				CE0F03541D5DA889006F9AB3 /* Info.plist */,
 				CEEB74DD1D5DBECB0017B2F7 /* CheeseBurgerYummy-Bridging-Header.h */,
 				CEEB74E11D5DC7610017B2F7 /* Extension.swift */,
+				CE27DA981E0A48B20024BC3C /* ServerConnect.swift */,
 			);
 			path = CheeseBurgerYummy;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				CEEB74E21D5DC7610017B2F7 /* Extension.swift in Sources */,
 				CEEB74E41D5DCF2E0017B2F7 /* DetailHABViewController.swift in Sources */,
 				CE0F03491D5DA889006F9AB3 /* AppDelegate.swift in Sources */,
+				CE27DA991E0A48B20024BC3C /* ServerConnect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

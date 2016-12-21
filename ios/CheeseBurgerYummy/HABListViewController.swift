@@ -22,7 +22,7 @@ class HABListViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        Alamofire.request("http://192.168.0.9:8080/list/", method: .get, parameters: nil, encoding: JSONEncoding.default)
+        Alamofire.request("http://192.168.0.9:8080/list/", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ServerConnect.getHeader())
             .validate()
             .responseJSON { response in
                 switch response.result {
