@@ -32,6 +32,8 @@ cleanup_pre_delete.connect(sorl_delete)
 
 @api_view(['GET', 'POST'])
 def list(request):
+    print(request.META)
+    
     if request.method == 'GET':
         householdAccountBook = HouseholdAccountBook.objects.all()
         serializer = HouseholdAccountBookSerializer(householdAccountBook, many=True)
