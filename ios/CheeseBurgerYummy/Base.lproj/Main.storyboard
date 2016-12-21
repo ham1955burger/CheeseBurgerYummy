@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +12,7 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="PhotoTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="CheeseBurgerYummy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -22,8 +21,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQV-41-sZI">
-                                <rect key="frame" x="150" y="380" width="114" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQV-41-sZI">
+                                <rect key="frame" x="150" y="380" width="75" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ZWb-Gz-yLl"/>
                                 </constraints>
@@ -32,15 +31,15 @@
                                     <segue destination="RGN-58-93o" kind="show" identifier="main_to_HAB_list" id="7i0-vd-x8C"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Apd-Ud-tjl">
-                                <rect key="frame" x="150" y="440" width="114" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Apd-Ud-tjl">
+                                <rect key="frame" x="150" y="440" width="75" height="40"/>
                                 <state key="normal" title="Photo List"/>
                                 <connections>
                                     <segue destination="Xa3-MV-aq4" kind="show" identifier="main_to_photo_list" id="pfn-Sh-ijY"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rest API Test !!!!!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaU-P9-3hm">
-                                <rect key="frame" x="140" y="310" width="135" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rest API Test !!!!!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaU-P9-3hm">
+                                <rect key="frame" x="120" y="310" width="135" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="2QC-dw-T81"/>
                                 </constraints>
@@ -48,23 +47,33 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="XMV-5B-4PF">
-                                <rect key="frame" x="60" y="140" width="294" height="150"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="XMV-5B-4PF">
+                                <rect key="frame" x="56" y="140" width="263" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="FsJ-WO-OHq"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXI-vB-wGD">
+                                <rect key="frame" x="152" y="500" width="71" height="40"/>
+                                <state key="normal" title="Login Test"/>
+                                <connections>
+                                    <segue destination="P3X-6f-7WN" kind="show" identifier="main_to_login_test" id="diO-ae-ey7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Apd-Ud-tjl" firstAttribute="leading" secondItem="NQV-41-sZI" secondAttribute="leading" id="1Zj-K8-arC"/>
                             <constraint firstItem="zaU-P9-3hm" firstAttribute="top" secondItem="XMV-5B-4PF" secondAttribute="bottom" constant="20" id="5fN-gM-q6g"/>
                             <constraint firstItem="Apd-Ud-tjl" firstAttribute="trailing" secondItem="NQV-41-sZI" secondAttribute="trailing" id="5mK-oU-h8n"/>
+                            <constraint firstItem="JXI-vB-wGD" firstAttribute="centerX" secondItem="Apd-Ud-tjl" secondAttribute="centerX" id="5re-uI-ENy"/>
                             <constraint firstItem="XMV-5B-4PF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="120" id="ExV-ja-GYq"/>
                             <constraint firstItem="NQV-41-sZI" firstAttribute="top" secondItem="zaU-P9-3hm" secondAttribute="bottom" constant="20" id="I9b-h2-R4Q"/>
                             <constraint firstItem="NQV-41-sZI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="134" id="JGf-dT-jw8"/>
                             <constraint firstItem="NQV-41-sZI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="150" id="Nzz-l1-sVQ"/>
+                            <constraint firstItem="JXI-vB-wGD" firstAttribute="height" secondItem="Apd-Ud-tjl" secondAttribute="height" id="bOY-cp-b9Q"/>
                             <constraint firstItem="zaU-P9-3hm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cqE-Kz-NXV"/>
+                            <constraint firstItem="JXI-vB-wGD" firstAttribute="top" secondItem="Apd-Ud-tjl" secondAttribute="bottom" constant="20" id="oHf-UA-pct"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XMV-5B-4PF" secondAttribute="trailing" constant="40" id="s1X-mv-4MS"/>
                             <constraint firstItem="Apd-Ud-tjl" firstAttribute="top" secondItem="NQV-41-sZI" secondAttribute="bottom" constant="20" id="v9X-aJ-jRS"/>
                             <constraint firstItem="XMV-5B-4PF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="40" id="vdY-sb-RhC"/>
@@ -83,12 +92,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="840" y="429"/>
+            <point key="canvasLocation" x="996" y="232"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="nOM-qs-l1s">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="RGN-58-93o" customClass="HABListViewController" customModule="PhotoTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="RGN-58-93o" customClass="HABListViewController" customModule="CheeseBurgerYummy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8YI-d2-PLX"/>
                         <viewControllerLayoutGuide type="bottom" id="VLy-cg-AbZ"/>
@@ -108,11 +117,11 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="tableViewCell" rowHeight="100" id="eEz-72-sQp" customClass="HABTableViewCell" customModule="PhotoTest" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="tableViewCell" rowHeight="100" id="eEz-72-sQp" customClass="HABTableViewCell" customModule="CheeseBurgerYummy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eEz-72-sQp" id="I4R-eN-gf9">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="category / price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Usc-bM-kd9">
@@ -223,7 +232,7 @@
         <!--DetailHAB View Controller-->
         <scene sceneID="JY7-xT-Agp">
             <objects>
-                <viewController storyboardIdentifier="detailHABViewController" id="rfv-GE-LVS" customClass="DetailHABViewController" customModule="PhotoTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailHABViewController" id="rfv-GE-LVS" customClass="DetailHABViewController" customModule="CheeseBurgerYummy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Nl-RG-2QB"/>
                         <viewControllerLayoutGuide type="bottom" id="MPj-BN-An2"/>
@@ -382,10 +391,46 @@
             </objects>
             <point key="canvasLocation" x="2382" y="116"/>
         </scene>
+        <!--Login Test View Controller-->
+        <scene sceneID="Wxw-D0-AzC">
+            <objects>
+                <viewController id="P3X-6f-7WN" customClass="LoginTestViewController" customModule="CheeseBurgerYummy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Hr-w2-Nhn"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Rr-Ct-A7K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="R5D-li-HB0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjn-7t-sxO">
+                                <rect key="frame" x="139" y="165" width="97" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Facebook"/>
+                                <connections>
+                                    <action selector="actionFacebook:" destination="P3X-6f-7WN" eventType="touchUpInside" id="02G-QM-ENB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fx-0T-Zw2">
+                                <rect key="frame" x="139" y="244" width="91" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Instagram"/>
+                                <connections>
+                                    <action selector="actionInstagram:" destination="P3X-6f-7WN" eventType="touchUpInside" id="8uw-bY-fjO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dsb-qT-rrX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="839.20000000000005" y="1171.6641679160421"/>
+        </scene>
         <!--Photo List View Controller-->
         <scene sceneID="rfK-Hb-7pL">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Xa3-MV-aq4" customClass="PhotoListViewController" customModule="PhotoTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Xa3-MV-aq4" customClass="PhotoListViewController" customModule="CheeseBurgerYummy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="41T-H6-cIS"/>
                         <viewControllerLayoutGuide type="bottom" id="gyW-3r-9BR"/>
@@ -403,8 +448,8 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="kjp-Qo-Fs9" customClass="CollectionViewCell" customModule="PhotoTest" customModuleProvider="target">
-                                        <rect key="frame" x="98.5" y="0.0" width="217" height="200"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="kjp-Qo-Fs9" customClass="CollectionViewCell" customModule="CheeseBurgerYummy" customModuleProvider="target">
+                                        <rect key="frame" x="99" y="0.0" width="217" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="217" height="200"/>
@@ -484,7 +529,7 @@
         <!--Photo Detail View Controller-->
         <scene sceneID="Yqx-VV-4WJ">
             <objects>
-                <viewController storyboardIdentifier="photoDetailViewController" id="F5X-Ui-pbZ" customClass="PhotoDetailViewController" customModule="PhotoTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="photoDetailViewController" id="F5X-Ui-pbZ" customClass="PhotoDetailViewController" customModule="CheeseBurgerYummy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AAB-5u-LcO"/>
                         <viewControllerLayoutGuide type="bottom" id="cRO-p1-hpo"/>
@@ -597,7 +642,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kql-5C-cvE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="304" y="429"/>
+            <point key="canvasLocation" x="281" y="232"/>
         </scene>
     </scenes>
     <resources>

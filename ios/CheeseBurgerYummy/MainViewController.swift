@@ -29,6 +29,8 @@ class MainViewController: UIViewController {
                 segue.destination.navigationItem.title = "HAB"
             case "main_to_photo_list":
                 segue.destination.navigationItem.title = "Photo"
+            case "main_to_login_test":
+                segue.destination.navigationItem.title = "Login Test"
             default:
                 return
         }

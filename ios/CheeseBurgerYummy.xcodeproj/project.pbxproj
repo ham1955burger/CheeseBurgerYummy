@@ -18,6 +18,10 @@
 		CE0F035E1D5DA889006F9AB3 /* PhotoTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F035D1D5DA889006F9AB3 /* PhotoTestTests.swift */; };
 		CE0F03691D5DA889006F9AB3 /* PhotoTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F03681D5DA889006F9AB3 /* PhotoTestUITests.swift */; };
 		CE27DA991E0A48B20024BC3C /* ServerConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27DA981E0A48B20024BC3C /* ServerConnect.swift */; };
+		CE27DAA01E0A55980024BC3C /* LoginTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27DA9F1E0A55980024BC3C /* LoginTestViewController.swift */; };
+		CE27DAA21E0A56F90024BC3C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE27DAA11E0A56F80024BC3C /* FBSDKLoginKit.framework */; };
+		CE27DAA41E0A5B6A0024BC3C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE27DAA31E0A5B6A0024BC3C /* FBSDKCoreKit.framework */; };
+		CE27DAA61E0A5DB40024BC3C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE27DAA51E0A5DB40024BC3C /* Bolts.framework */; };
 		CE4D6D211D6304D6002B8794 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D6D201D6304D6002B8794 /* PhotoDetailViewController.swift */; };
 		CE87D4E81D5DB6620011A324 /* HABListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87D4E71D5DB6620011A324 /* HABListViewController.swift */; };
 		CE87D4EA1D5DB66C0011A324 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87D4E91D5DB66C0011A324 /* PhotoListViewController.swift */; };
@@ -70,6 +74,10 @@
 		CE0F03681D5DA889006F9AB3 /* PhotoTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTestUITests.swift; sourceTree = "<group>"; };
 		CE0F036A1D5DA889006F9AB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE27DA981E0A48B20024BC3C /* ServerConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnect.swift; sourceTree = "<group>"; };
+		CE27DA9F1E0A55980024BC3C /* LoginTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTestViewController.swift; sourceTree = "<group>"; };
+		CE27DAA11E0A56F80024BC3C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		CE27DAA31E0A5B6A0024BC3C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		CE27DAA51E0A5DB40024BC3C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		CE4D6D201D6304D6002B8794 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		CE87D4E71D5DB6620011A324 /* HABListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HABListViewController.swift; sourceTree = "<group>"; };
 		CE87D4E91D5DB66C0011A324 /* PhotoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
@@ -85,7 +93,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE27DAA21E0A56F90024BC3C /* FBSDKLoginKit.framework in Frameworks */,
+				CE27DAA41E0A5B6A0024BC3C /* FBSDKCoreKit.framework in Frameworks */,
 				967DD7CE1013C51497D906D5 /* Pods_CheeseBurgerYummy.framework in Frameworks */,
+				CE27DAA61E0A5DB40024BC3C /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +122,9 @@
 		A0DD7816B359000677CFF19C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE27DAA51E0A5DB40024BC3C /* Bolts.framework */,
+				CE27DAA31E0A5B6A0024BC3C /* FBSDKCoreKit.framework */,
+				CE27DAA11E0A56F80024BC3C /* FBSDKLoginKit.framework */,
 				9A1D3F510F371CA9D2A54B96 /* Pods_CheeseBurgerYummy.framework */,
 				1C6824C2121367A4D495153A /* Pods_CheeseBurgerYummyTests.framework */,
 				D1165405080BB7182D4F0A86 /* Pods_CheeseBurgerYummyUITests.framework */,
@@ -143,19 +157,18 @@
 		CE0F03471D5DA889006F9AB3 /* CheeseBurgerYummy */ = {
 			isa = PBXGroup;
 			children = (
+				CE27DA9C1E0A53D60024BC3C /* LoginTest */,
+				CE27DA9B1E0A53870024BC3C /* Photo */,
+				CE27DA9A1E0A53720024BC3C /* HAB */,
+				CEEB74E11D5DC7610017B2F7 /* Extension.swift */,
+				CE27DA981E0A48B20024BC3C /* ServerConnect.swift */,
 				CE0F03481D5DA889006F9AB3 /* AppDelegate.swift */,
 				CE0F034A1D5DA889006F9AB3 /* MainViewController.swift */,
 				CE0F034C1D5DA889006F9AB3 /* Main.storyboard */,
-				CE87D4E71D5DB6620011A324 /* HABListViewController.swift */,
-				CEEB74E31D5DCF2E0017B2F7 /* DetailHABViewController.swift */,
-				CE87D4E91D5DB66C0011A324 /* PhotoListViewController.swift */,
-				CE4D6D201D6304D6002B8794 /* PhotoDetailViewController.swift */,
-				CE0F034F1D5DA889006F9AB3 /* Assets.xcassets */,
 				CE0F03511D5DA889006F9AB3 /* LaunchScreen.storyboard */,
+				CE0F034F1D5DA889006F9AB3 /* Assets.xcassets */,
 				CE0F03541D5DA889006F9AB3 /* Info.plist */,
 				CEEB74DD1D5DBECB0017B2F7 /* CheeseBurgerYummy-Bridging-Header.h */,
-				CEEB74E11D5DC7610017B2F7 /* Extension.swift */,
-				CE27DA981E0A48B20024BC3C /* ServerConnect.swift */,
 			);
 			path = CheeseBurgerYummy;
 			sourceTree = "<group>";
@@ -178,6 +191,32 @@
 			);
 			name = PhotoTestUITests;
 			path = CheeseBurgerYummyUITests;
+			sourceTree = "<group>";
+		};
+		CE27DA9A1E0A53720024BC3C /* HAB */ = {
+			isa = PBXGroup;
+			children = (
+				CEEB74E31D5DCF2E0017B2F7 /* DetailHABViewController.swift */,
+				CE87D4E71D5DB6620011A324 /* HABListViewController.swift */,
+			);
+			name = HAB;
+			sourceTree = "<group>";
+		};
+		CE27DA9B1E0A53870024BC3C /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				CE4D6D201D6304D6002B8794 /* PhotoDetailViewController.swift */,
+				CE87D4E91D5DB66C0011A324 /* PhotoListViewController.swift */,
+			);
+			name = Photo;
+			sourceTree = "<group>";
+		};
+		CE27DA9C1E0A53D60024BC3C /* LoginTest */ = {
+			isa = PBXGroup;
+			children = (
+				CE27DA9F1E0A55980024BC3C /* LoginTestViewController.swift */,
+			);
+			name = LoginTest;
 			sourceTree = "<group>";
 		};
 		F95C1A1992120000B1D83359 /* Pods */ = {
@@ -488,6 +527,7 @@
 				CEEB74E41D5DCF2E0017B2F7 /* DetailHABViewController.swift in Sources */,
 				CE0F03491D5DA889006F9AB3 /* AppDelegate.swift in Sources */,
 				CE27DA991E0A48B20024BC3C /* ServerConnect.swift in Sources */,
+				CE27DAA01E0A55980024BC3C /* LoginTestViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,6 +672,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/CheeseBurgerYummy/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -650,6 +694,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/CheeseBurgerYummy/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
