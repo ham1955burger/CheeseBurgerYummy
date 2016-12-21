@@ -70,7 +70,7 @@ public class HABListActivity extends Activity {
     private void getList() {
         InterfaceAPI apiService = ServiceGenerator.getClient().create(InterfaceAPI.class);
 
-        Call<ArrayList<HouseholdAccountBook>> call = apiService.getHABList();
+        Call<ArrayList<HouseholdAccountBook>> call = apiService.getHABList("tttoookkkeeennn");
         call.enqueue(new Callback<ArrayList<HouseholdAccountBook>>() {
             @Override
             public void onResponse(Call<ArrayList<HouseholdAccountBook>> call, Response<ArrayList<HouseholdAccountBook>> response) {
