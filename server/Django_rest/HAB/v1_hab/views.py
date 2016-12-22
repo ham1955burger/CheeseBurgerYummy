@@ -7,6 +7,9 @@ from v1_hab.serializers import HouseholdAccountBookSerializer, PhotoSerializer
 from django_cleanup.signals import cleanup_pre_delete, cleanup_post_delete
 from django.conf import settings
 
+# For Web
+from django.shortcuts import render
+
 
 
 # signals 적용
@@ -33,7 +36,7 @@ cleanup_pre_delete.connect(sorl_delete)
 @api_view(['GET', 'POST'])
 def list(request):
     print(request.META)
-    
+
     if request.method == 'GET':
         householdAccountBook = HouseholdAccountBook.objects.all()
         serializer = HouseholdAccountBookSerializer(householdAccountBook, many=True)
@@ -96,7 +99,7 @@ class PhotoDetail(APIView):
         photo = self.get_object(pk)
         serializer = PhotoSerializer(photo)
         return Response(serializer.data)
-    
+
     def post(self, request, pk, format=None):
         photo = self.get_object(pk)
         serializer = PhotoSerializer(photo, data=request.data, partial=True)
@@ -118,3 +121,8 @@ class PhotoDetail(APIView):
         photo = self.get_object(pk)
         photo.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# For Web
+def scheme(request):
+    return render(request, 'scheme_test.html', {})

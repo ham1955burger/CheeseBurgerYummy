@@ -22,6 +22,10 @@ from django.conf import settings
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
+    # for Web
+    url(r'^scheme$', views.scheme, name='scheme'),
+
+    # for REST
     url(r'^list/$', views.list),
     url(r'^detail/(?P<pk>[0-9]+)$', views.detail),
     url(r'^photo$', views.PhotoList.as_view()),

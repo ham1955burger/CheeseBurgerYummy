@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>햄니's test site(?)</title>
+    </head>
+    <body>
+          <br>
+          <h1>URL Scheme Test!</h1>
+          <p>하단 버튼을 눌러주세요</p>
+          <input type="button" name="shemeButton" value="                                   꾸욱                                   " onclick="schemeButton_clicked()">
+          <script type="text/javascript">
+          function schemeButton_clicked() {
+            var userAgent = navigator.userAgent;
+            var visitedAt = (new Date()).getTime();
+            // 동작 이상 추후 수정 필요
+            if (userAgent.match(/iPhone|iPad|iPod/)) {
+              setTimeout(
+                function() {
+                  if((new Date()).getTime() - visitedAt < 2000) {
+                    location.href = "http://www.naver.com"
+                  }
+                }, 500);
+
+              setTimeout(
+                function() {
+                  location.href='cheeseburgeryummy://'
+                  return;
+                }, 0);
+            }
+          }
+          </script>
+    </body>
+</html>
