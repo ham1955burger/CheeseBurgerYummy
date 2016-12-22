@@ -18,10 +18,11 @@
 		CE0F035E1D5DA889006F9AB3 /* PhotoTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F035D1D5DA889006F9AB3 /* PhotoTestTests.swift */; };
 		CE0F03691D5DA889006F9AB3 /* PhotoTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F03681D5DA889006F9AB3 /* PhotoTestUITests.swift */; };
 		CE27DA991E0A48B20024BC3C /* ServerConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27DA981E0A48B20024BC3C /* ServerConnect.swift */; };
-		CE27DAA01E0A55980024BC3C /* LoginTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27DA9F1E0A55980024BC3C /* LoginTestViewController.swift */; };
+		CE27DAA01E0A55980024BC3C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27DA9F1E0A55980024BC3C /* LoginViewController.swift */; };
 		CE27DAA21E0A56F90024BC3C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE27DAA11E0A56F80024BC3C /* FBSDKLoginKit.framework */; };
 		CE27DAA41E0A5B6A0024BC3C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE27DAA31E0A5B6A0024BC3C /* FBSDKCoreKit.framework */; };
 		CE27DAA61E0A5DB40024BC3C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE27DAA51E0A5DB40024BC3C /* Bolts.framework */; };
+		CE27DAAB1E0B8EBB0024BC3C /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE27DAAA1E0B8EBB0024BC3C /* FBSDKShareKit.framework */; };
 		CE4D6D211D6304D6002B8794 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D6D201D6304D6002B8794 /* PhotoDetailViewController.swift */; };
 		CE87D4E81D5DB6620011A324 /* HABListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87D4E71D5DB6620011A324 /* HABListViewController.swift */; };
 		CE87D4EA1D5DB66C0011A324 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87D4E91D5DB66C0011A324 /* PhotoListViewController.swift */; };
@@ -74,10 +75,11 @@
 		CE0F03681D5DA889006F9AB3 /* PhotoTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTestUITests.swift; sourceTree = "<group>"; };
 		CE0F036A1D5DA889006F9AB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE27DA981E0A48B20024BC3C /* ServerConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnect.swift; sourceTree = "<group>"; };
-		CE27DA9F1E0A55980024BC3C /* LoginTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTestViewController.swift; sourceTree = "<group>"; };
+		CE27DA9F1E0A55980024BC3C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CE27DAA11E0A56F80024BC3C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		CE27DAA31E0A5B6A0024BC3C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		CE27DAA51E0A5DB40024BC3C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		CE27DAAA1E0B8EBB0024BC3C /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		CE4D6D201D6304D6002B8794 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		CE87D4E71D5DB6620011A324 /* HABListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HABListViewController.swift; sourceTree = "<group>"; };
 		CE87D4E91D5DB66C0011A324 /* PhotoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			files = (
 				CE27DAA21E0A56F90024BC3C /* FBSDKLoginKit.framework in Frameworks */,
 				CE27DAA41E0A5B6A0024BC3C /* FBSDKCoreKit.framework in Frameworks */,
+				CE27DAAB1E0B8EBB0024BC3C /* FBSDKShareKit.framework in Frameworks */,
 				967DD7CE1013C51497D906D5 /* Pods_CheeseBurgerYummy.framework in Frameworks */,
 				CE27DAA61E0A5DB40024BC3C /* Bolts.framework in Frameworks */,
 			);
@@ -122,6 +125,7 @@
 		A0DD7816B359000677CFF19C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE27DAAA1E0B8EBB0024BC3C /* FBSDKShareKit.framework */,
 				CE27DAA51E0A5DB40024BC3C /* Bolts.framework */,
 				CE27DAA31E0A5B6A0024BC3C /* FBSDKCoreKit.framework */,
 				CE27DAA11E0A56F80024BC3C /* FBSDKLoginKit.framework */,
@@ -157,6 +161,7 @@
 		CE0F03471D5DA889006F9AB3 /* CheeseBurgerYummy */ = {
 			isa = PBXGroup;
 			children = (
+				CE27DAA91E0B8A2E0024BC3C /* Custom */,
 				CE27DA9C1E0A53D60024BC3C /* LoginTest */,
 				CE27DA9B1E0A53870024BC3C /* Photo */,
 				CE27DA9A1E0A53720024BC3C /* HAB */,
@@ -214,9 +219,16 @@
 		CE27DA9C1E0A53D60024BC3C /* LoginTest */ = {
 			isa = PBXGroup;
 			children = (
-				CE27DA9F1E0A55980024BC3C /* LoginTestViewController.swift */,
+				CE27DA9F1E0A55980024BC3C /* LoginViewController.swift */,
 			);
 			name = LoginTest;
+			sourceTree = "<group>";
+		};
+		CE27DAA91E0B8A2E0024BC3C /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Custom;
 			sourceTree = "<group>";
 		};
 		F95C1A1992120000B1D83359 /* Pods */ = {
@@ -527,7 +539,7 @@
 				CEEB74E41D5DCF2E0017B2F7 /* DetailHABViewController.swift in Sources */,
 				CE0F03491D5DA889006F9AB3 /* AppDelegate.swift in Sources */,
 				CE27DA991E0A48B20024BC3C /* ServerConnect.swift in Sources */,
-				CE27DAA01E0A55980024BC3C /* LoginTestViewController.swift in Sources */,
+				CE27DAA01E0A55980024BC3C /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

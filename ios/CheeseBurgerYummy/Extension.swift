@@ -8,6 +8,20 @@
 
 import Foundation
 
+extension UIColor {
+    class func stringToColor(stringColor: String) -> UIColor {
+        var hexInt: UInt32 = 0
+        let scanner = Scanner(string: stringColor)
+        scanner.scanHexInt32(&hexInt)
+        let color = UIColor(
+            red: CGFloat((hexInt & 0xFF0000) >> 16)/225,
+            green: CGFloat((hexInt & 0xFF00) >> 8)/225,
+            blue: CGFloat((hexInt & 0xFF))/225,
+            alpha: 1)
+        
+        return color
+    }
+}
 
 extension String {
     func stateHABString() -> String {

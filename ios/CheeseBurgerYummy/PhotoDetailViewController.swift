@@ -102,7 +102,63 @@ class PhotoDetailViewController: UIViewController {
                 }
         }
     }
+    
+    @IBAction func actionShare(_ sender: Any) {
+        // https://developers.facebook.com/docs/sharing/ios/share-button
+       
+        let contentURL: URL = URL(string: "http://en.wikipedia.org/wiki/Facebook")!
+        let imageURL: URL = URL(string: "http://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Facebook_Headquarters_Menlo_Park.jpg/2880px-Facebook_Headquarters_Menlo_Park.jpg")!
+        
+        /*
+        let contentURL: URL = URL(string: "http://192.168.0.9:8080/scheme")!
+        let imageURL: URL = URL(string: "http://192.168.0.9:8080\(info!["image_thumb_file"].stringValue)")!*/
+        
+        let shareLink = FBSDKShareLinkContent()
+        shareLink.contentURL = contentURL
+        shareLink.imageURL = imageURL
+        shareLink.contentTitle = "CheeseBurgerYummy"
+        shareLink.contentDescription = "\(info!["description"].stringValue)"
+        
+//        FBSDKShareDialog.show(from: self, with: shareLink, delegate: self)
+        
+        let dialog : FBSDKShareDialog = FBSDKShareDialog()
+        dialog.delegate = self
+        dialog.fromViewController = self
+        dialog.shareContent = shareLink
+        
+        let facebookURL = URL(string: "fbauth2://app")
+        if UIApplication.shared.canOpenURL(facebookURL!) {
+            dialog.mode = FBSDKShareDialogMode.native
+        } else {
+            dialog.mode = FBSDKShareDialogMode.feedWeb
+        }
+        dialog.show()
+    }
 }
+
+// MARK: - FBSDKSharingDelegate
+
+extension PhotoDetailViewController: FBSDKSharingDelegate {
+    func sharer(_ sharer: FBSDKSharing!, didCompleteWithResults results: [AnyHashable : Any]!) {
+        print("FB: SHARE RESULTS=\(results.debugDescription)")
+        // 공유했을 경우 result로 postId가 날라옴 /automatic일 경우 공유 안하고 나왔을 경우 이 함수를 타며, results엔 값이 없음
+        if results["postId"] != nil {
+            self.oneButtonAlert(String("공유되었습니다."))
+        }
+    }
+    
+    func sharer(_ sharer: FBSDKSharing!, didFailWithError error: Error!) {
+        print("FB: ERROR=\(error)")
+    }
+    
+    func sharerDidCancel(_ sharer: FBSDKSharing!) {
+        // FBSDKShareDialogMode를 정해주지 않으면 default는 automatic.
+        // automatic일 경우 이 함수를 타지 않음
+        print("ddddddd")
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 
 extension PhotoDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
