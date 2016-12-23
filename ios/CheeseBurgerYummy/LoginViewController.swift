@@ -37,11 +37,14 @@ class LoginViewController: UIViewController {
                     
                     // https://developers.facebook.com/docs/graph-api/reference/user
                     let parameters: [String: String] = [
-                        "fields": "email, name, age_range, cover, locale, gender"
+                        "fields": "id, link, email, name, age_range, cover, locale, gender"
                     ]
                     
                     FBSDKGraphRequest(graphPath: "me", parameters: parameters).start(completionHandler: { (connection, result, error) in
                         if error == nil {
+                            
+                            print(FBSDKAccessToken.current().tokenString)
+                            print(FBSDKAccessToken.current().tokenString)
                             
                             // facebook 정책에 따라 값이 있고, 없을 수 있으므로 예외처리 필요
                             print(result!)
