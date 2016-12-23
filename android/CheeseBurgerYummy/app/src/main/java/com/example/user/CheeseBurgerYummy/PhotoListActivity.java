@@ -1,4 +1,4 @@
-package com.example.user.CheeseBurgerYummy;
+package com.example.user.cheeseburgeryummy;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -13,10 +13,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.user.CheeseBurgerYummy.Network.InterfaceAPI;
-import com.example.user.CheeseBurgerYummy.Network.ServiceGenerator;
-import com.example.user.CheeseBurgerYummy.Photo.PhotoBook;
-import com.example.user.CheeseBurgerYummy.Photo.PhotoListAdapter;
+import com.example.user.cheeseburgeryummy.Network.InterfaceAPI;
+import com.example.user.cheeseburgeryummy.Network.ServiceGenerator;
+import com.example.user.cheeseburgeryummy.Photo.PhotoBook;
+import com.example.user.cheeseburgeryummy.Photo.PhotoListAdapter;
 
 import java.util.ArrayList;
 

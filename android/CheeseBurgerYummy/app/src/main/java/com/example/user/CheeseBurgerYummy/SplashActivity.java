@@ -1,4 +1,4 @@
-package com.example.user.CheeseBurgerYummy;
+package com.example.user.cheeseburgeryummy;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -24,7 +24,7 @@ public class SplashActivity extends Activity {
 
     private class splashhandler implements Runnable{
         public void run() {
-            startActivity(new Intent(getApplication(), MainActivity.class)); // 로딩이 끝난후 이동할 Activity
+            startActivity(new Intent(getApplication(), LoginActivity.class)); // 로딩이 끝난후 이동할 Activity
             SplashActivity.this.finish(); // 로딩페이지 Activity Stack에서 제거
         }
     }

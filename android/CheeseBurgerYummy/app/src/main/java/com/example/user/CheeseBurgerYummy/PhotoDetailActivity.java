@@ -1,4 +1,4 @@
-package com.example.user.CheeseBurgerYummy;
+package com.example.user.cheeseburgeryummy;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -26,12 +25,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.user.CheeseBurgerYummy.Network.InterfaceAPI;
-import com.example.user.CheeseBurgerYummy.Network.ServiceGenerator;
-import com.example.user.CheeseBurgerYummy.Photo.PhotoBook;
-import com.example.user.CheeseBurgerYummy.Util.Utility;
+import com.example.user.cheeseburgeryummy.Network.InterfaceAPI;
+import com.example.user.cheeseburgeryummy.Network.ServiceGenerator;
+import com.example.user.cheeseburgeryummy.Photo.PhotoBook;
+import com.example.user.cheeseburgeryummy.Util.Utility;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Request;
 
 import java.io.File;
 import java.io.FileInputStream;

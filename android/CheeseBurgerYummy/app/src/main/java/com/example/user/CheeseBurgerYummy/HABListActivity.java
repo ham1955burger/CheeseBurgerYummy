@@ -1,4 +1,4 @@
-package com.example.user.CheeseBurgerYummy;
+package com.example.user.cheeseburgeryummy;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -12,10 +12,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.user.CheeseBurgerYummy.HAB.HABListAdapter;
-import com.example.user.CheeseBurgerYummy.HAB.HouseholdAccountBook;
-import com.example.user.CheeseBurgerYummy.Network.InterfaceAPI;
-import com.example.user.CheeseBurgerYummy.Network.ServiceGenerator;
+import com.example.user.cheeseburgeryummy.HAB.HABListAdapter;
+import com.example.user.cheeseburgeryummy.HAB.HouseholdAccountBook;
+import com.example.user.cheeseburgeryummy.Network.InterfaceAPI;
+import com.example.user.cheeseburgeryummy.Network.ServiceGenerator;
 
 import java.util.ArrayList;
 

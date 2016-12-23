@@ -1,4 +1,4 @@
-package com.example.user.CheeseBurgerYummy.HAB;
+package com.example.user.cheeseburgeryummy.HAB;
 
 import com.google.gson.annotations.SerializedName;
 

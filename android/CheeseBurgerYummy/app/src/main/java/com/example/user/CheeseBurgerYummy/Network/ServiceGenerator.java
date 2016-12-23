@@ -1,4 +1,4 @@
-package com.example.user.CheeseBurgerYummy.Network;
+package com.example.user.cheeseburgeryummy.Network;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package com.example.user.CheeseBurgerYummy;
+package com.example.user.cheeseburgeryummy;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

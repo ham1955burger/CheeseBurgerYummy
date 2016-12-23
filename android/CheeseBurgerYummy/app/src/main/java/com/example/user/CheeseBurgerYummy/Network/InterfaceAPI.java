@@ -1,7 +1,7 @@
-package com.example.user.CheeseBurgerYummy.Network;
+package com.example.user.cheeseburgeryummy.Network;
 
-import com.example.user.CheeseBurgerYummy.HAB.HouseholdAccountBook;
-import com.example.user.CheeseBurgerYummy.Photo.PhotoBook;
+import com.example.user.cheeseburgeryummy.HAB.HouseholdAccountBook;
+import com.example.user.cheeseburgeryummy.Photo.PhotoBook;
 
 import java.util.ArrayList;
 import java.util.Map;

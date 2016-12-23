@@ -1,4 +1,4 @@
-package com.example.user.CheeseBurgerYummy.Photo;
+package com.example.user.cheeseburgeryummy.Photo;
 
 import android.content.Context;
 import android.graphics.Point;
@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.example.user.CheeseBurgerYummy.Network.ServiceGenerator;
-import com.example.user.CheeseBurgerYummy.PhotoListActivity;
-import com.example.user.CheeseBurgerYummy.R;
+import com.example.user.cheeseburgeryummy.Network.ServiceGenerator;
+import com.example.user.cheeseburgeryummy.PhotoListActivity;
+import com.example.user.cheeseburgeryummy.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.user.CheeseBurgerYummy.HAB;
+package com.example.user.cheeseburgeryummy.HAB;
 
 /**
  * Created by user on 12/14/16.

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.user.CheeseBurgerYummy">
+    package="com.example.user.cheeseburgeryummy">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -17,17 +17,22 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name="com.example.user.CheeseBurgerYummy.SplashActivity">
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <provider android:authorities="com.facebook.app.FacebookContentProvider1724127927903024"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true" />
+        <activity android:name="com.example.user.cheeseburgeryummy.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.user.CheeseBurgerYummy.MainActivity"></activity>
-        <activity android:name="com.example.user.CheeseBurgerYummy.PhotoListActivity"></activity>
-        <activity android:name="com.example.user.CheeseBurgerYummy.PhotoDetailActivity"></activity>
-        <activity android:name="com.example.user.CheeseBurgerYummy.HABListActivity"></activity>
-        <activity android:name="com.example.user.CheeseBurgerYummy.HABDetailActivity"></activity>
+        <activity android:name="com.example.user.cheeseburgeryummy.LoginActivity"></activity>
+        <activity android:name="com.example.user.cheeseburgeryummy.MainActivity"></activity>
+        <activity android:name="com.example.user.cheeseburgeryummy.PhotoListActivity"></activity>
+        <activity android:name="com.example.user.cheeseburgeryummy.PhotoDetailActivity"></activity>
+        <activity android:name="com.example.user.cheeseburgeryummy.HABListActivity"></activity>
+        <activity android:name="com.example.user.cheeseburgeryummy.HABDetailActivity"></activity>
     </application>
 
 </manifest>

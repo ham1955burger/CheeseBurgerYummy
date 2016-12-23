@@ -1,4 +1,4 @@
-package com.example.user.CheeseBurgerYummy.Util;
+package com.example.user.cheeseburgeryummy.Util;
 
 import android.Manifest;
 import android.annotation.TargetApi;

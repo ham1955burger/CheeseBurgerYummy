@@ -1,4 +1,4 @@
-package com.example.user.CheeseBurgerYummy.HAB;
+package com.example.user.cheeseburgeryummy.HAB;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.daimajia.swipe.SwipeLayout;
-import com.example.user.CheeseBurgerYummy.R;
+import com.example.user.cheeseburgeryummy.R;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.user.CheeseBurgerYummy;
+package com.example.user.cheeseburgeryummy;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,9 +15,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.user.CheeseBurgerYummy.HAB.HouseholdAccountBook;
-import com.example.user.CheeseBurgerYummy.Network.InterfaceAPI;
-import com.example.user.CheeseBurgerYummy.Network.ServiceGenerator;
+import com.example.user.cheeseburgeryummy.HAB.HouseholdAccountBook;
+import com.example.user.cheeseburgeryummy.Network.InterfaceAPI;
+import com.example.user.cheeseburgeryummy.Network.ServiceGenerator;
 
 import java.util.HashMap;
 import java.util.Map;
