@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf.urls import include
 
 urlpatterns = [
-    # url(r'^admin/', admin.site.urls),
+    url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
+    url(r'^admin/', admin.site.urls), # admin site
     url(r'^', include('v1_hab.urls')),
 ]
