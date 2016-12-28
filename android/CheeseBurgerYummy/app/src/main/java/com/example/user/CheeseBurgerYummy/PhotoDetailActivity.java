@@ -29,6 +29,13 @@ import com.example.user.cheeseburgeryummy.Network.InterfaceAPI;
 import com.example.user.cheeseburgeryummy.Network.ServiceGenerator;
 import com.example.user.cheeseburgeryummy.Photo.PhotoBook;
 import com.example.user.cheeseburgeryummy.Util.Utility;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookDialog;
+import com.facebook.FacebookException;
+import com.facebook.share.Sharer;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -37,6 +44,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -52,6 +60,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import timber.log.Timber;
+
+import static com.facebook.internal.CallbackManagerImpl.RequestCodeOffset.Share;
+
 /**
  * Created by user on 12/12/16.
  */
@@ -75,6 +86,8 @@ public class PhotoDetailActivity extends Activity {
     private String mCurrentPhotoPath;
     private Uri contentUri;
 
+    private static CallbackManager fbManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +98,8 @@ public class PhotoDetailActivity extends Activity {
 
         Intent intent = getIntent();
         entry = (Entry) intent.getExtras().get("entry");
+
+        fbManager = new CallbackManager.Factory().create();
 
         if (entry == Entry.EDIT) {
             createdDateTextView.setVisibility(View.VISIBLE);
@@ -111,6 +126,8 @@ public class PhotoDetailActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        fbManager.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
             rotatePhoto();
             cropImage(contentUri);
@@ -208,6 +225,40 @@ public class PhotoDetailActivity extends Activity {
     @OnClick(R.id.rootConstraintLayout) void hideKeyboard(ConstraintLayout constraintLayout) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(descriptionEditText.getWindowToken(), 0);
+    }
+
+    @OnClick(R.id.shareButton) void actionShare() {
+        Log.d("222222", "333333333");
+
+        Uri contentUrl = Uri.parse("https://developers.facebook.com");
+        Uri imageUrl = Uri.parse("http://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Facebook_Headquarters_Menlo_Park.jpg/2880px-Facebook_Headquarters_Menlo_Park.jpg");
+
+        ShareLinkContent shareContent = new ShareLinkContent.Builder()
+                .setContentUrl(contentUrl)
+                .setContentTitle(String.format("Android share test"))
+                .setContentDescription(info.getDescription())
+                .setImageUrl(imageUrl)
+                .build();
+
+        ShareDialog shareDialog = new ShareDialog(this);
+        shareDialog.registerCallback(PhotoDetailActivity.fbManager, new FacebookCallback<Sharer.Result>() {
+            @Override
+            public void onSuccess(Sharer.Result result) {
+                Toast.makeText(PhotoDetailActivity.this, "공유되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancel() {
+                Log.d("33333", "33333");
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+                e.printStackTrace();
+            }
+        });
+
+        shareDialog.show(shareContent, ShareDialog.Mode.FEED);
     }
 
     private void postPhoto() {

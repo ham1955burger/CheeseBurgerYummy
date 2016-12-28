@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -116,6 +116,16 @@
             tools:layout_editor_absoluteY="302dp"
             android:id="@+id/discriptionEditText" />
     </LinearLayout>
+
+    <Button
+        android:text="share"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/shareButton"
+        app:layout_constraintBottom_toTopOf="@+id/submitButton"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintLeft_toLeftOf="@+id/submitButton"
+        app:layout_constraintRight_toRightOf="@+id/submitButton" />
 
     <Button
         android:text="Add"
