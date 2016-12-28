@@ -697,6 +697,7 @@
                         <outlet property="deleteButton" destination="smO-0r-RWy" id="bkK-tg-I0D"/>
                         <outlet property="doneButton" destination="edq-f4-hmg" id="7oR-eL-oH9"/>
                         <outlet property="imageButton" destination="Smi-5W-nu5" id="f3L-n8-uTB"/>
+                        <outlet property="shareButton" destination="d2F-lW-dnD" id="Ofn-C1-U8y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqg-xY-e8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -708,7 +709,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MainNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="dqT-wi-ay7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="0qF-XZ-ssQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="0qF-XZ-ssQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

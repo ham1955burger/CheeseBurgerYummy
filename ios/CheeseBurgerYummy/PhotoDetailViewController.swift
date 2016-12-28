@@ -15,6 +15,7 @@ class PhotoDetailViewController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var createdLabel: UILabel!
+    @IBOutlet weak var shareButton: UIButton!
     
     var imagePicker: UIImagePickerController!
     var image: UIImage?
@@ -30,6 +31,7 @@ class PhotoDetailViewController: UIViewController {
             //add
             self.imageButton.setTitle("사진 가져오기", for: UIControlState())
             self.doneButton.setTitle("등록", for: UIControlState())
+            self.shareButton.isHidden = true
         } else {
             //edit
             self.imageButton.setTitle("", for: UIControlState())

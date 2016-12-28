@@ -77,6 +77,7 @@ public class PhotoDetailActivity extends Activity {
     @BindView(R.id.createdDateTextView) TextView createdDateTextView;
     @BindView(R.id.discriptionEditText) EditText descriptionEditText;
     @BindView(R.id.submitButton) Button submitButton;
+    @BindView(R.id.shareButton) Button shareButton;
 
     Entry entry;
     PhotoBook info;
@@ -113,6 +114,7 @@ public class PhotoDetailActivity extends Activity {
             createdDateTextView.setText(format.format(info.getCreatedAt()));
             descriptionEditText.setText(info.getDescription());
         } else {
+            shareButton.setVisibility(View.GONE);
             createdDateTextView.setVisibility(View.GONE);
         }
 
